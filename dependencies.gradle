@@ -1,0 +1,51 @@
+ext.configs = [
+        minSdk: 21,
+        compileSdk : 30,
+        targetSdk: 30,
+        buildToolVersion: '30.0.3'
+]
+
+ext.versions = [
+        appCompatVersion : '1.2.0',
+        constraintLayoutVersion: '2.0.4',
+        coreVersion : '1.3.2',
+        espressoVersion : '3.3.0',
+        gradleVersion: '7.1.0-alpha01',
+        koinVersion : '2.2.2',
+        kotlinVersion : '1.5.0',
+        junitInstrumentationVersion : '1.1.2',
+        junit : '4.+',
+        materialDesignVersion : '1.3.0',
+]
+
+ext.depend = [
+
+        'androidX' : [
+                'androidCore' : [
+                        'appCompat' : "androidx.appcompat:appcompat:${versions.appCompatVersion}",
+                        'core' : "androidx.core:core-ktx:${versions.coreVersion}",
+                        'constraintLayout' : "androidx.constraintlayout:constraintlayout:${versions.constraintLayoutVersion}"
+                ],
+
+                'androidDesign' : [
+                        'materialDesign' : "com.google.android.material:material:${versions.materialDesignVersion}"
+                ]
+        ],
+
+        'androidTest' : [
+                'instrumentationTest' : [
+                        'androidXJunit' : "androidx.test.ext:junit:${versions.junitInstrumentationVersion}",
+                        'espresso' : "androidx.test.espresso:espresso-core:${versions.espressoVersion}",
+                ],
+
+                "test" : [
+                        'junit' : "junit:junit:${versions.junit}"
+                ],
+        ],
+
+        'injection' : [
+                'koin' : "org.koin:koin-core:${versions.koinVersion}",
+                'koinViewModel': "org.koin:koin-android-viewmodel:${versions.koinVersion}"
+        ]
+
+]

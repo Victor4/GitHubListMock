@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk configs.compileSdk
+    buildToolsVersion configs.buildToolVersion
+
+    defaultConfig {
+        applicationId "com.vb.github_list"
+        minSdk configs.minSdk
+        targetSdk configs.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+
+    implementation project(':home')
+    implementation project(':domain')
+
+    implementation depend.androidX.androidCore.core
+    implementation depend.androidX.androidCore.appCompat
+    implementation depend.androidX.androidCore.constraintLayout
+
+    implementation depend.androidX.androidDesign.materialDesign
+
+    testImplementation depend.androidTest.test.junit
+    implementation depend.injection.koin
+
+    androidTestImplementation depend.androidTest.instrumentationTest.androidXJunit
+    androidTestImplementation depend.androidTest.instrumentationTest.espresso
+}
